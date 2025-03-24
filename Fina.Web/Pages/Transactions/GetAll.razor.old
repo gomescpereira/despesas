@@ -1,0 +1,28 @@
+@page "/transactions"
+@inherits GetAllTransactionsPage
+
+<MudText Typo="Typo.h3">Lançamentos</MudText>
+<div class="d-flex justify-end">
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.TwoTone.Add"
+        Href="/transactions/adicionar">
+        NOVO LANÇAMENTO
+    </MudButton>
+</div>
+<MudSelect T="string" Label="Select Coffee With Keys" AnchorOrigin="Origin.BottomCenter">
+    <MudSelectItem Value="@("Cappuccino")" />
+    <MudSelectItem Value="@("Cafe Latte")" />
+    <MudSelectItem Value="@("Espresso")" />
+    <MudSelectItem Value="@("Irish Coffee")" />
+</MudSelect>
+<MudDataGrid Class="mt-4" Items="@Transactions" Filterable="true">
+    <Columns>
+        <PropertyColumn Property="x => x.Id" Title="#" />
+        <PropertyColumn Property="x => x.Title" Title="Transação" />
+        <TemplateColumn Class="d-flex justify-end">
+            <CellTemplate>
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error"
+                    OnClick="() => OnDeleteButtonClickedAsync(context.Item.Id, context.Item.Title)" />
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>

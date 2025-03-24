@@ -1,0 +1,34 @@
+###
+POST  http://localhost:5250/v1/transactions
+ Accept: application/json, text/plain,
+ Content-Type: application/json
+  
+ {
+    "title": "Ferias",
+    "type": 1,
+    "amount": 56.45,
+    "categoryId": 4,
+   "paidOrReceivedAt": "2024-09-19T13:36:23.614Z"
+ }
+
+###
+
+ PUT  http://localhost:5250/v1/transactions/260089
+ Accept: application/json, text/plain,
+ Content-Type: application/json
+  
+ {
+    "title": "IPTU 25/02",
+    "type": 1,
+    "categoryId": 6,
+    "amount": 97.71,
+    "consumer": 0,
+    "paidOrReceivedAt": "2025-02-25T00:00:00.000Z",
+    "pay": true
+ }
+
+###
+ GET  http://localhost:5250/v1/transactions/
+ Accept: application/json, text/plain,
+ Content-Type: application/json
+ 
