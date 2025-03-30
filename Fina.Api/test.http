@@ -3,7 +3,7 @@ POST  http://localhost:5250/v1/transactions
  Accept: application/json, text/plain,
  Content-Type: application/json
   
- {
+x {
     "title": "Ferias",
     "type": 1,
     "amount": 56.45,

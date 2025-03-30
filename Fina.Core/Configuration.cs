@@ -8,5 +8,6 @@ public static class Configuration
     
     public static string BackendUrl { get; set; } = "http://localhost:5250";
     public static string FrontendUrl { get; set; } = "http://localhost:5200";
-     public static string FrontendReact { get; set; } = "http://localhost:5173";
+    public static string FrontendReact { get; set; } = "http://localhost:5173";
+    public static string FrontendLocal { get; set; } = "http://192.168.0.191:5173";
 }
