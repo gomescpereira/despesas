@@ -7,7 +7,7 @@ public static class WebConfiguration
     public const string HttpClientName = "fina";
 
     public static string StripePublicKey { get; set; } = "";
-    public static string BackendUrl { get; set; } = "http://localhost:5250";
+    public static string BackendUrl { get; set; } = "http://localhost:8080";
 
     public static MudTheme Theme = new()
     {

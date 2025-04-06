@@ -47,20 +47,16 @@ public static class BuildExtension
     public static void AddCrossOrigin(this WebApplicationBuilder builder)
     {
         builder.Services.AddCors(
-            options => options.AddPolicy(
-                ApiConfiguration.CorsPolicyName,
-                    policy => policy
-                    .WithOrigins([
-                         Configuration.BackendUrl,
-                         Configuration.FrontendUrl,
-                         Configuration.FrontendReact,
-                    //     //Configuration.LocalUrl,
-                     ])
-                    //.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    //.AllowCredentials()
-            ));
+         
+            options  =>  {
+              options.AddPolicy("AllowAll",
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+         });
     }
     
     public static void AddServices(this WebApplicationBuilder builder)
@@ -78,3 +74,13 @@ public static class BuildExtension
            .AddTransient<IReportHandler, ReportHandler>();
     }
 }
+
+
+
+//options.AddPolicy("AllowAll",
+//                builder =>
+//                {
+//                    builder.AllowAnyOrigin()
+//                           .AllowAnyMethod()
+//                           .AllowAnyHeader();
+//               });

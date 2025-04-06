@@ -15,7 +15,9 @@ if (app.Environment.IsDevelopment())
     app.ConfigureDevEnvironment();
 
 app.UseRouting();
-app.UseCors(ApiConfiguration.CorsPolicyName);
+
+app.UseCors("AllowAll");
+// app.UseCors(ApiConfiguration.CorsPolicyName);
 app.MapEndpoints();
 
 app.Run();

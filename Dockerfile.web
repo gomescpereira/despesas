@@ -11,12 +11,12 @@ COPY . /app
 #WORKDIR "./Fina.Core"
 
 
-WORKDIR "./Fina.Api"
-RUN dotnet restore "Fina.Api.csproj"
-RUN dotnet build "Fina.Api.csproj" -c Release -o /app/build
+WORKDIR "./Fina.Web"
+RUN dotnet restore "Fina.Web.csproj"
+RUN dotnet build "Fina.Web.csproj" -c Release -o /app/build
 
 # Publica a aplicação
-RUN dotnet publish "Fina.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "Fina.Web.csproj" -c Release -o /app/publish
 
 
 # Estágio 2: Runtime da aplicação
@@ -24,10 +24,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 
 #ENV ASPNETCORE_URLS http://*:5250
-EXPOSE 8080
 
 # Copia apenas os arquivos publicados do estágio de build
 COPY --from=build /app/publish .
 
 # Define o comando de entrada para rodar a aplicação
-ENTRYPOINT ["dotnet", "Fina.Api.dll"]
+ENTRYPOINT ["dotnet", "Fina.Web.dll"]

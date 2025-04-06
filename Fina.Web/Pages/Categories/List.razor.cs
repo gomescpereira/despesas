@@ -12,7 +12,7 @@ public partial class ListCategoriesPage : ComponentBase
     #region Properties
 
     public bool IsBusy { get; set; } = false;
-    public List<Category> Categories { get; set; }
+    public List<Category> Categories { get; set; } = [];
     public string SearchTerm { get; set; } = string.Empty;
 
     #endregion

@@ -6,6 +6,7 @@
 # dotenv files
 .env
 *.bat
+*.Dockefile.*
 
 # Pastas No necessarias
 ./.sonarqube/
