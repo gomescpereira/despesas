@@ -13,6 +13,6 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
          dotnet-version: "8.0.300"
-      - working-directory: ./src/
+      - working-directory: ./Fina.Api/
         run: dotnet build Fina.Api.sln
 
