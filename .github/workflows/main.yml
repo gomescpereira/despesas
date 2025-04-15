@@ -8,7 +8,7 @@ on:
 jobs:
   name: Build
   runs-on: ubunti-latest
-  steps:
+   steps:
     - uses: actions/chechout@v4
     - name: Setup dotnet
       uses: actions/setup-dotnet@v4
