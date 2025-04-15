@@ -12,9 +12,15 @@ COPY . /app
 
 
 WORKDIR "./Fina.Api"
+
+#RUN dotnet tool install --global dotnet-sonarscanner
+
+#RUN dotnet sonarscanner begin /k:"FinApi" /d:sonar.host.url="http://192.168.0.20:9010"  /d:sonar.login="sqp_c9985fa8203557764f34f2f3b65534995fcab19c"
+
 RUN dotnet restore "Fina.Api.csproj"
 RUN dotnet build "Fina.Api.csproj" -c Release -o /app/build
 
+# RUN dotnet sonarscanner end /d:sonar.login="sqp_c9985fa8203557764f34f2f3b65534995fcab19c"
 # Publica a aplicação
 RUN dotnet publish "Fina.Api.csproj" -c Release -o /app/publish
 

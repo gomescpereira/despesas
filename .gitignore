@@ -15,7 +15,7 @@
 ./Fina.Web/.sonarqube
 ./subpub/
 ./testesBaltA/
-
+./Fina.Api/.scannerwork/
 
 # User-specific files
 *.rsuser

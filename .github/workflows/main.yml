@@ -3,16 +3,24 @@ name: CI-CD
 on:
   push:
     branches: ["main"]
-  workflow_dispatch:    
+  workflow_dispatch:
 jobs:
   ci:
-     runs-on: ubuntu-latest
-     steps:
-      - uses: actions/checkout@v4
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v4
-        with:
-         dotnet-version: "8.0.300"
-      - working-directory: ./Fina.Api/
-        run: dotnet build Fina.Api.sln
+    steps:
+     - name: Autenticar no Docker Hun
+       uses: docker/login-action@v2
+       with:
+         username: ${{ secrets.DOCKERHUB_USERNME }}
+         password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    -  name: Contruçção de Imagem Docker
+       uses: docker/build-push-actions@v6
+       with:
+         context: .
+         push: true
+         file: ./Dockerfile
+         tags: |
+           gomesdocker/fina-api:latest
+           gomesdocker/fina-api:v${{ github.run_number }}
+
 
