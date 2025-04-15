@@ -6,14 +6,14 @@ on:
   workflow_dispatch:    
 
 jobs:
-  name: Build
+  ci:
      runs-on: ubuntu-latest
-  steps:
-     - uses: actions/chechout@v4
-     - name: Setup dotnet
-       uses: actions/setup-dotnet@v4
-       whith:
+     steps:
+      - uses: actions/chechout@v4
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
          dotnet-version: "8.0.300"
-     - working-directory: ./src/
-       run: dotnet build Fina.Api.sln
+      - working-directory: ./src/
+        run: dotnet build Fina.Api.sln
 
