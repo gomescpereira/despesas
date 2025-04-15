@@ -1,0 +1,19 @@
+name: CI-CD
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:    
+
+jobs:
+  name: Build
+  runs-on: ubunti-latest
+  steps:
+    - uses: actions/chechout@v4
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v4
+      whith:
+         dotnet-version: "8.0.300"
+    - working-directory: ./src/
+      run: dotnet build Fina.Api.sln
+
