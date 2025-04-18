@@ -15,11 +15,11 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
-        with:
-         args: >
-          - Dsonar.projectKey=prodesps
-         projectBaseDir: ./src 
-         scanMetadataReportFile: ./src/.scannerwork/report-task.txt
+        with: 
+          args: >
+           - Dsonar.projectKey=prodesps
+          projectBaseDir: ./src 
+          scanMetadataReportFile: ./src/.scannerwork/report-task.txt
 
       - name: SonarQube Quality Gate Scan
         id: sonarqube-quality-gate-check
