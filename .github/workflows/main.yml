@@ -10,6 +10,18 @@ jobs:
       - name: Obter o código do projeto
         uses: actions/checkout@v4
 
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@<action@v5.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+        with:
+         args: >
+          - Dsonar.projectKey=prodesps
+         projectBaseDir: ./src 
+         scanMetadataReportFile: ./src/.scannerwork/report-task.txt
+ 
+
       - name: Autenticar no Docker Hun
         uses: docker/login-action@v2
         with:
